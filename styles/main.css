@@ -34,8 +34,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 10rem;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
 
     color: white;
     font-family: "JetBrains Mono", monospace;
@@ -49,7 +48,16 @@ h1 {
                 font-size 0.2s ease;
 }
 
-h1:hover {
-    font-weight: 300 !important;
-    font-size: 3em;
+@media (hover: hover) {
+    h1:hover {
+        font-weight: 300;
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 960px) {
+    main {
+        flex-direction: column;
+        gap: 3rem;
+    }
 }
