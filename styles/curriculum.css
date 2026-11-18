@@ -1,0 +1,154 @@
+/* Curriculum page (central section). Load after pages.css. */
+
+/* ---------- Sections ---------- */
+.timeline-section + .timeline-section {
+  margin-top: 2.5rem;
+}
+
+.timeline-section h2 {
+  margin: 0 0 1.75rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* ---------- Timeline ---------- */
+
+/* An <ol> that alternates date markers and entries */
+.timeline {
+  --dot: 0.75rem;
+  --marker-h: 1.5rem;
+  --thumb: 8rem;
+
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The vertical line: runs from the first dot's center to the last dot's center */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--marker-h) / 2);
+  bottom: calc(var(--marker-h) / 2);
+  left: calc(var(--dot) / 2);
+  width: 1px;
+  background: var(--border-hover);
+  transform: translateX(-50%);
+}
+
+/* Empty period: covers the line with background-colored dashes */
+.timeline-gap {
+  position: relative;
+  height: 54px;
+}
+
+.timeline-gap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--dot) / 2);
+  width: 1px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(to bottom, var(--bg) 0 6px, transparent 6px 12px);
+}
+
+/* Date marker: a dot on the line plus its label */
+.timeline-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: var(--marker-h);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.timeline-marker::before {
+  content: "";
+  flex: none;
+  width: var(--dot);
+  height: var(--dot);
+  box-sizing: border-box;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+/* The first marker is the present */
+.timeline-marker:first-child {
+  color: var(--accent);
+}
+.timeline-marker:first-child::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* ---------- Entry ---------- */
+.timeline-item {
+  padding: 1.5rem 0 1.5rem calc(var(--dot) + 1.25rem);
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: var(--thumb) 1fr;
+  align-items: center;
+  column-gap: 1rem;
+}
+/* No photo: the title takes the full width */
+.timeline-entry:not(:has(.entry-thumb)) {
+  grid-template-columns: 1fr;
+}
+
+.entry-thumb {
+  display: block;
+  width: var(--thumb);
+  height: var(--thumb);
+  object-fit: contain;
+  border: 0px solid var(--border);
+  border-radius: 8px;
+  padding: 0rem;
+
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+.timeline-entry h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Description sits below the photo + title row, full width.
+   To tuck it under the title instead (to the right of the photo), use:
+.entry-description {
+  grid-column: 1 / -1;
+  max-width: 62ch;
+}*/
+
+.entry-description {
+  grid-column: 2;
+}
+
+.entry-description p {
+  margin: 0 0 1em;
+}
+
+.entry-description p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    --thumb: 3.75rem;
+  }
+  .timeline-item {
+    padding-left: calc(var(--dot) + 1rem);
+  }
+  .timeline-entry h3 {
+    font-size: 1rem;
+  }
+}

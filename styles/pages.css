@@ -1,0 +1,255 @@
+/* Shared styles for the static pages (Contacts, Curriculum, Projects) */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Theme tokens ---------- */
+/* Dark is the default so the pages match the homepage, also with JS disabled */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #061413;
+  --bg-glow: #15383b;
+  --surface: rgb(21 56 59 / 0.35);
+  --surface-hover: rgb(21 56 59 / 0.7);
+  --border: rgb(140 210 205 / 0.16);
+  --border-hover: rgb(110 220 210 / 0.45);
+  --text: #d9eeec;
+  --muted: #8fb0ae;
+  --accent: #5ec9c0;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e1edeb;
+  --bg-glow: #f8fcfb;
+  --surface: rgb(255 255 255 / 0.6);
+  --surface-hover: rgb(255 255 255 / 0.95);
+  --border: rgb(6 20 19 / 0.14);
+  --border-hover: rgb(11 111 114 / 0.5);
+  --text: #0b1f20;
+  --muted: #4a6866;
+  --accent: #0b6f72;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  font-synthesis: none;
+  color: var(--text);
+  background: var(--bg) radial-gradient(ellipse at 30% 20%, var(--bg-glow), var(--bg) 70%) fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.15;
+}
+
+/* ---------- Top bar: back link (left) + theme toggle (right) ---------- */
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--text);
+}
+.back svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+.theme-toggle svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+/* Show the icon of the mode you will switch to */
+.theme-toggle .icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+/* ---------- Page layout ---------- */
+.page {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 5rem 1.5rem 3rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 34rem;
+}
+
+.lead {
+  margin: 0 0 2.5rem;
+  max-width: 46ch;
+  color: var(--muted);
+}
+
+/* ---------- Contact list ---------- */
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.contact-list li {
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.2rem 0.25rem;
+  font-size: 1.05rem;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.contact-link:hover {
+  color: var(--accent);
+  padding-left: 0.75rem;
+}
+
+.contact-link svg {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent);
+}
+
+.contact-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Top bar (blur) */
+.topbar::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -1.25rem 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 45%, transparent), transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: -webkit-linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+.page--top {
+  align-content: start;
+}
+.container--wide {
+  max-width: 46rem;
+}
+
+/* Hyperlink styling with icon for the headings */
+article h2 a,
+article h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+article h2 a::before,
+article h3 a::before {
+  content: "";
+  flex: none;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+article a {
+  transition: color 0.2s;
+}
+
+article a:hover {
+  color: var(--accent);
+}
+
+/* Theme-specific images: dark is the default, matching pages.css */
+:root:not([data-theme="light"]) .show-on-light,
+:root[data-theme="light"] .show-on-dark {
+  display: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

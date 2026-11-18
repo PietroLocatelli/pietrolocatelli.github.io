@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Pietro Locatelli" />
+		<title>Pietro Locatelli · Curriculum</title>
+		<meta name="description" content="Work experience and education of Pietro Locatelli." />
+
+		<link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="stylesheet" href="/styles/pages.css">
+		<link rel="stylesheet" href="/styles/curriculum.css">
+
+		<script>
+			try {
+				document.documentElement.dataset.theme =
+					localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+			} catch (e) {}
+		</script>
+		<script src="/scripts/theme.js" defer></script>
+	</head>
+
+	<body>
+		<header class="topbar">
+			<a class="back" href="/">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<path d="m15 18-6-6 6-6"/>
+				</svg>
+				Home
+			</a>
+
+			<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+				<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<circle cx="12" cy="12" r="4"/>
+					<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+				</svg>
+				<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+				</svg>
+			</button>
+		</header>
+
+		<main class="page page--top">
+			<div class="container container--wide">
+
+				<!-- Central section. A sidebar can later sit next to this wrapper. -->
+				<div class="cv-main">
+					<h1>Curriculum</h1>
+					<p class="lead"></p>
+
+					<!-- ===== Timeline: work experience =====
+						 Always one more marker than entries:
+						 marker, entry, marker, entry, ..., marker.
+						 The first marker is styled as "now". Copy this whole <section>
+						 to make another timeline. -->
+					<section class="timeline-section" aria-labelledby="work-heading">
+						<h2 id="work-heading">Work experience</h2>
+
+						<ol class="timeline">
+							<li class="timeline-marker">Present</li>
+
+							<li class="timeline-gap" aria-hidden="true"></li>
+
+							<li class="timeline-marker"><time datetime="Dec 2025">Dec 2025</time></li>
+
+							<li class="timeline-item">
+								<article class="timeline-entry">
+									<img class="entry-thumb show-on-dark"  src="/assets/images/logo-res-light.svg"
+										 alt="RES Synesis" loading="lazy">
+									<img class="entry-thumb show-on-light" src="/assets/images/logo-res-dark.svg"
+										 alt="RES Synesis" loading="lazy">
+									<h3>University Student Internship @ <a href="https://res-group.eu/gruppo-res/res-synesis/" target="_blank" rel="noopener noreferrer">
+										RES Synesis</a></h3>
+									<div class="entry-description">
+										<p>Frontend web developer working on <a href="/projects/#tridix" style="text-decoration: underline;">
+											Tridix</a>.<br>Advanced JavaScript, Three.js, Tween.js, HTML, and CSS.</p>
+									</div>
+								</article>
+							</li>
+
+							<li class="timeline-marker"><time datetime="Oct 2025">Oct 2025</time></li>
+
+							<li class="timeline-gap" aria-hidden="true"></li>
+
+							<li class="timeline-marker"><time datetime="Aug 2019">Aug 2019</time></li>
+
+							<li class="timeline-item">
+								<article class="timeline-entry">
+									<img class="entry-thumb show-on-dark"  src="/assets/images/logo-inode-light.svg"
+										 alt="Inode SRL" loading="lazy">
+									<img class="entry-thumb show-on-light" src="/assets/images/logo-inode-dark.svg"
+										 alt="Inode SRL" loading="lazy">
+									<h3>High School Student Internship @ Inode SRL</h3>
+									<div class="entry-description">
+										<p>Introduction to Autodesk Maya.<br>Basic 3D modelling, texturing, and animating.</p>
+									</div>
+								</article>
+							</li>
+
+							<li class="timeline-marker"><time datetime="Jul 2019">Jul 2019</time></li>
+						</ol>
+					</section>
+
+					<!-- ===== Timeline: education ===== -->
+					<section class="timeline-section" aria-labelledby="education-heading">
+						<h2 id="education-heading">Education</h2>
+
+						<ol class="timeline">
+							<li class="timeline-marker">Present</li>
+
+							<li class="timeline-item">
+								<article class="timeline-entry">
+									<img class="entry-thumb show-on-dark"  src="/assets/images/logo-polito-light.svg"
+										 alt="Polytechnic of Turin" loading="lazy">
+									<img class="entry-thumb show-on-light" src="/assets/images/logo-polito-dark.svg"
+										 alt="Polytechnic of Turin" loading="lazy">
+									<h3>Polytechnic of Turin - Computer Engineering</h3>
+									<div class="entry-description">
+										<p>Advanced Python, C, C++, and Java.<br>Introduction to SQL, Assembly, and computer electronics.</p>
+									</div>
+								</article>
+							</li>
+
+							<li class="timeline-marker"><time datetime="2020">2020</time></li>
+
+							<li class="timeline-item">
+								<article class="timeline-entry">
+									<img class="entry-thumb" src="/assets/images/logo-liceo.png"
+										 alt="Scientific High-School">
+									<h3>Scientific High-School - Applied Sciences</h3>
+									<div class="entry-description">
+										<p>First introduction to programming.<br>Basic and intermediate C, C++, and Java.</p>
+									</div>
+								</article>
+							</li>
+
+							<li class="timeline-marker"><time datetime="2015">2015</time></li>
+						</ol>
+					</section>
+				</div>
+
+			</div>
+		</main>
+	</body>
+</html>

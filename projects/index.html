@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Pietro Locatelli" />
+		<title>Pietro Locatelli · Projects</title>
+		<meta name="description" content="A selection of projects by Pietro Locatelli." />
+
+		<link rel="preload" href="/assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="stylesheet" href="/styles/pages.css">
+		<link rel="stylesheet" href="/styles/projects.css">
+
+		<script>
+			try {
+				document.documentElement.dataset.theme =
+					localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+			} catch (e) {}
+		</script>
+		<script src="/scripts/theme.js" defer></script>
+	</head>
+
+	<body>
+		<header class="topbar">
+			<a class="back" href="/">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<path d="m15 18-6-6 6-6"/>
+				</svg>
+				Home
+			</a>
+
+			<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+				<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<circle cx="12" cy="12" r="4"/>
+					<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+				</svg>
+				<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+					 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+				</svg>
+			</button>
+		</header>
+
+		<main class="page page--top">
+			<div class="container container--wide">
+				<h1>Projects</h1>
+				<p class="lead"></p>
+
+				<div class="projects">
+
+					<article class="project" id="tridix">
+						<h2><a href="https://res-group.eu/soluzioni/tridix/" target="_blank" rel="noopener noreferrer">
+							Tridix @ RES Synesis</a></h2>
+
+						<div class="project-media">
+							<video playsinline="playsinline" width="100%" style="object-fit: cover;" autoplay="autoplay" muted="muted" loop="loop" preload="auto">
+								<source src="/assets/videos/tridix-demo.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos.
+							</video>
+						</div>
+
+						<div class="project-description">
+							<p>A 2D and 3D configurator, designed for companies that want to provide their customers with a preview of their product,
+								with the option to customise various details such as colour, material, shape, lighting, scenery, and more.</p>
+							<p>I mainly worked on the standalone version of the 3D configurator, based on JavaScript and using the Three.js library.
+								The 3D demo shown in the video is available
+								<a href="https://inode.it/demo3D/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">
+									here</a>.</p>
+						</div>
+
+						<ul class="skills" aria-label="Skills used">
+							<li>JavaScript</li>
+							<li>Three.js</li>
+							<li>Tween.js</li>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>Claude</li>
+							<li>GitHub</li>
+						</ul>
+					</article>
+
+					<article class="project" id="portfolio-website">
+						<h2><a href="https://github.com/PietroLocatelli/pietrolocatelli.github.io" target="_blank" rel="noopener noreferrer">
+							Portfolio Website</a></h2>
+
+						<div class="project-media">
+							<img src="/assets/images/portfolio-website.png" alt="Diagram of the anomaly detection pipeline" loading="lazy">
+						</div>
+
+						<div class="project-description">
+							<p>Yes, this very website. This entry is here simply to provide a link to the website's
+								<a href="https://github.com/PietroLocatelli/pietrolocatelli.github.io" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">
+									GitHub repository</a>.</p>
+						</div>
+
+						<ul class="skills" aria-label="Skills used">
+							<li>JavaScript</li>
+							<li>Three.js</li>
+							<li>Tween.js</li>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>Claude</li>
+							<li>GitHub</li>
+						</ul>
+					</article>
+
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
