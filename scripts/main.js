@@ -28,14 +28,14 @@ function canUse3D(canvas) {
 
 domReady.then(() => {
     const canvas = document.getElementById('three-background-canvas');
-    const container = document.getElementById('three-background-container');
+    const staticBackground = document.getElementById('static-background');
 
     let pageLoadDelay = 0;
     if(canUse3D(canvas)) {
         try {
-            const background = new ThreeBackground(canvas);
+            const threeBackground = new ThreeBackground(canvas);
             canvas.hidden = false;
-            container.classList.add('ready');
+            staticBackground.classList.add('faded');
             pageLoadDelay = 500;
         } catch (e) {
             console.warn('3D background loading failed, falling back to plain HTML/CSS:', e);
