@@ -28,7 +28,6 @@ export class ThreeBackground {
 
     initScene(canvas) {
         this.scene = new THREE.Scene();
-        //this.scene.fog = new THREE.Fog(0x061413, 30, 200);
 
         this.camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 0.1, 100);
         this.camera.position.z = 50;
@@ -130,7 +129,7 @@ export class ThreeBackground {
         const vertexState = this.vertexStates[index];
 
         const tween = new TWEEN.Tween(vertexState)
-            .to({ off: newOffset(vertexState.off) }, 2700 + Math.random() * 6300) //2700 + Math.random() * 6300) // duration in ms
+            .to({ off: newOffset(vertexState.off) }, 2700 + Math.random() * 6300)
             .easing(TWEEN.Easing.Sinusoidal.InOut)
             .onUpdate(() => {
                 if(!vertexState.waving){
@@ -163,7 +162,7 @@ export class ThreeBackground {
         const hits = raycaster.intersectObject(this.planeMesh);
         if (hits.length === 0) return;
 
-        // The intersection point is in world space; vertex positions are local.
+        // The intersection point is in world space; vertex positions are local
         localHit.copy(hits[0].point);
         this.planeMesh.worldToLocal(localHit);
 
@@ -175,7 +174,7 @@ export class ThreeBackground {
     }
 
     startWaveAnimation(index, distance) {
-        if(distance > 120) return;
+        if(distance > 140) return;
         const positions = this.planeGeometry.attributes.position;
         const scale = Math.min(10 / distance, 1);
         const upOffset = () => { return (Math.random() * 0.5 + 5) * scale; };
@@ -185,7 +184,7 @@ export class ThreeBackground {
         vertexState.waving = true;
 
         const upTween = new TWEEN.Tween(vertexState)
-            .to({ off: upOffset() }, 80) // duration in ms
+            .to({ off: upOffset() }, 80)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onUpdate(() => {
                 positions.setZ(index, vertexState.pos + vertexState.off);
@@ -194,7 +193,7 @@ export class ThreeBackground {
                 this.tweenList.add(downTween);
             });
         const downTween = new TWEEN.Tween(vertexState)
-            .to({ off: downOffset() }, 170) // duration in ms
+            .to({ off: downOffset() }, 170)
             .easing(TWEEN.Easing.Quadratic.In)
             .onUpdate(() => {
                 positions.setZ(index, vertexState.pos + vertexState.off);
@@ -203,7 +202,7 @@ export class ThreeBackground {
                 this.tweenList.add(resetTween);
             });
         const resetTween = new TWEEN.Tween(vertexState)
-            .to({ off: startingOffset }, 300) // duration in ms
+            .to({ off: startingOffset }, 300)
             .easing(TWEEN.Easing.Cubic.Out)
             .onUpdate(() => {
                 positions.setZ(index, vertexState.pos + vertexState.off);
@@ -222,10 +221,15 @@ export class ThreeBackground {
     }
 
     startRenderLoop() {
+        let fps = 30;
+        let last = -fps;
         const animate = (time) => {
-            this.composer.render(time);
-            this.tweenList.update(time);
-            this.planeGeometry.attributes.position.needsUpdate = true;
+            if(time - last > 1000/fps) {
+                this.composer.render(time);
+                this.tweenList.update(time);
+                this.planeGeometry.attributes.position.needsUpdate = true;
+                last = time;
+            }
         }
         this.renderer.setAnimationLoop(animate);
     }

@@ -9,7 +9,9 @@
 }
 
 /* ---------- Theme tokens ---------- */
-/* Dark is the default so the pages match the homepage, also with JS disabled */
+
+/* Dark is the default so the pages match the homepage */
+
 :root,
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -38,6 +40,7 @@
 }
 
 /* ---------- Base ---------- */
+
 *,
 *::before,
 *::after {
@@ -74,7 +77,8 @@ h1 {
   line-height: 1.15;
 }
 
-/* ---------- Top bar: back link (left) + theme toggle (right) ---------- */
+/* ---------- Top bar: back button + theme toggle ---------- */
+
 .topbar {
   position: fixed;
   inset: 0 0 auto 0;
@@ -124,7 +128,9 @@ h1 {
   width: 1.15rem;
   height: 1.15rem;
 }
-/* Show the icon of the mode you will switch to */
+
+/* Theme toggle icon */
+
 .theme-toggle .icon-moon {
   display: none;
 }
@@ -136,6 +142,7 @@ h1 {
 }
 
 /* ---------- Page layout ---------- */
+
 .page {
   min-height: 100vh;
   display: grid;
@@ -156,6 +163,7 @@ h1 {
 }
 
 /* ---------- Contact list ---------- */
+
 .contact-list {
   margin: 0;
   padding: 0;
@@ -192,7 +200,8 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-/* Top bar (blur) */
+/* Top bar blur */
+
 .topbar::before {
   content: "";
   position: absolute;
@@ -213,6 +222,7 @@ h1 {
 }
 
 /* Hyperlink styling with icon for the headings */
+
 article h2 a,
 article h3 a {
   display: inline-flex;
@@ -239,13 +249,15 @@ article a:hover {
   color: var(--accent);
 }
 
-/* Theme-specific images: dark is the default, matching pages.css */
+/* Theme-specific images: dark is the default */
+
 :root:not([data-theme="light"]) .show-on-light,
 :root[data-theme="light"] .show-on-dark {
   display: none;
 }
 
 /* ---------- Reduced motion ---------- */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
